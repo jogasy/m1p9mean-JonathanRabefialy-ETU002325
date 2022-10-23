@@ -1,8 +1,8 @@
+import { FeatherIconsModule } from './../../shared/feather-icons/feather-icons.module';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { BasketComponent } from '../basket/basket.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 const route: Routes = [
@@ -15,12 +15,12 @@ const route: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-    BasketComponent,
     TopBarComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(route)
+    RouterModule.forChild(route),
+    FeatherIconsModule
   ]
 })
 export class HomeModule { }
