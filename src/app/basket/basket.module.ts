@@ -1,10 +1,12 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BasketComponent } from './basket.component';
-import { DataComponent } from './components/data/data.component';
-import { ContentComponent } from './components/content/content.component';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 import { FeatherIconsModule } from 'src/shared/feather-icons/feather-icons.module';
+import { BasketComponent } from './basket.component';
+import { ContentComponent } from './components/content/content.component';
+import { DataComponent } from './components/data/data.component';
+import { QuantityOrderComponent } from './components/quantity-order/quantity-order.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 const route: Routes = [
@@ -19,10 +21,12 @@ const route: Routes = [
     BasketComponent,
     DataComponent,
     ContentComponent,
-    TopBarComponent
+    TopBarComponent,
+    QuantityOrderComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild(route),
     FeatherIconsModule
   ]
