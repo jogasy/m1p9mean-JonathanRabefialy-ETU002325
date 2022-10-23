@@ -1,0 +1,21 @@
+<button [routerLink]="['basket']"
+        class="d-none d-lg-inline-flex btn btn-primary basket-btn position-relative justify-content-center align-items-center border-0 p-1 shadow-none">
+  <span class="me-2 ps-2 text-right">
+    <div class="order-total">
+      Votre panier
+    </div>
+  </span>
+
+  <em appFeatherIcons data-feather="shopping-cart" class="ms-2 me-2"></em>
+  <span *ngIf="(shoppingCount$ | async) ?? 0 as shoppingCount" [@skewZoom]="shoppingCount"
+        class="badge bg-accent rounded-pill cart-count">
+    {{ shoppingCount }}</span>
+</button>
+
+<button [routerLink]="['basket']"
+        class="d-lg-none btn basket-btn position-relative justify-content-center align-items-center border-0 p-1 shadow-none">
+  <em appFeatherIcons data-feather="shopping-cart" class="ms-2 me-2"></em>
+  <span *ngIf="(shoppingCount$ | async) ?? 0 as shoppingCount" [@skewZoom]="shoppingCount"
+        class="badge bg-accent rounded-pill cart-count">
+    {{ shoppingCount }}</span>
+</button>

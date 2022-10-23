@@ -1,9 +1,11 @@
-import { FeatherIconsModule } from './../../shared/feather-icons/feather-icons.module';
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { FeatherIconsModule } from './../../shared/feather-icons/feather-icons.module';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { HomeComponent } from './home.component';
+import { CardComponent } from './components/card/card.component';
+import { BasketBtnComponent } from './components/basket-btn/basket-btn.component';
 
 const route: Routes = [
   {
@@ -15,7 +17,9 @@ const route: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-    TopBarComponent
+    TopBarComponent,
+    CardComponent,
+    BasketBtnComponent
   ],
   imports: [
     CommonModule,
