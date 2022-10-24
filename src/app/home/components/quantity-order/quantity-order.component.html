@@ -1,5 +1,5 @@
-<div class="d-flex">
-  <button class="btn btn-sm bg-gray fw-bold action-button shadow-sm rounded-3" type="button" (click)="remove()">
+<div class="d-flex" *ngIf="showQtyOrder">
+  <button class="btn btn-sm bg-gray fw-bold action-button shadow-sm rounded-3" type="button" (click)="changeQuantity(-1)">
     -
   </button>
   <input disabled autocomplete="off" ref="quantityInput" type="string"
@@ -7,4 +7,8 @@
   <button class="btn btn-sm bg-gray fw-bold action-button rounded-3 shadow-sm" type="button" (click)="changeQuantity(1)">
     +
   </button>
+</div>
+
+<div *ngIf="!showQtyOrder">
+  <a class="btn btn-primary btn-sm mb-3" role="button" (click)="addToBasket()">Ajouter au panier </a>
 </div>

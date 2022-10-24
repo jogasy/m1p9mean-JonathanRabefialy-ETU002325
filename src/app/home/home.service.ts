@@ -46,6 +46,13 @@ export class HomeService {
 
   constructor(private store: Store) { }
 
+  getDishInBasket(id: string): Observable<Dish | undefined> {
+    return this.store.select(OrdersState.getDish)
+              .pipe(
+                map(filterFn => filterFn(id))
+              );
+  }
+
   getData(): Observable<Dish[]> {
     return of(this.data)
         .pipe(
@@ -55,6 +62,14 @@ export class HomeService {
 
   createBasket(val: Dish) {
     const dish = { ...val , qty: 1};
-    return this.store.dispatch(new Orders.CreateBasket(dish));
+    this.store.dispatch(new Orders.CreateBasket(dish));
+  }
+
+  removeDishinBasket(id: string) {
+    this.store.dispatch(new Orders.RemoveBasket(id));
+  }
+
+  updateBasket(id: string, dish: Partial<Dish>) {
+    this.store.dispatch(new Orders.UpdateBasket(id, dish));
   }
 }

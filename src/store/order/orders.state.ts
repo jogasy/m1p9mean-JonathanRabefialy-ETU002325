@@ -24,9 +24,9 @@ export class OrdersState {
   }
 
   @Selector()
-  static orderItem(state: OrdersStateModel): (id: string) => Dish | undefined {
-      return (itemId: string): Dish | undefined => {
-          return state.basket?.find(x => x.id === itemId);
+  static getDish(state: OrdersStateModel): (id: string) => Dish | undefined {
+      return (id: string): Dish | undefined => {
+          return state.basket?.find(x => x.id === id);
       };
   }
 

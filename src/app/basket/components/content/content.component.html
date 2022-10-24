@@ -20,7 +20,7 @@
         <app-quantity-order [dish]="dish"></app-quantity-order>
       </td>
       <td>
-        <a class="btn bg-white btn-sm" role="button">
+        <a class="btn bg-white btn-sm" role="button" (click)="deleteDish(dish.id)">
           <em appFeatherIcons data-feather="trash-2"></em>
         </a>
       </td>

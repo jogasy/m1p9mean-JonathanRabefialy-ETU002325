@@ -10,7 +10,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class CardComponent implements OnInit, OnDestroy {
   @Input() dish!: Dish;
-  showQtyOrder: boolean = false;
+
   private unsuscribe$ : Subject<void> = new Subject();
 
   constructor(private homeService: HomeService) { }
@@ -21,17 +21,7 @@ export class CardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-  }
 
-  addToBasket(dish?: Dish) {
-    if(dish){
-      this.homeService.createBasket(dish)
-        .pipe(
-          takeUntil(this.unsuscribe$)
-        )
-        .subscribe();
-      this.showQtyOrder = true;
-    }
   }
 
 }

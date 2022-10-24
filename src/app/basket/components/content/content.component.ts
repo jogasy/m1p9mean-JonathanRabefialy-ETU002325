@@ -1,7 +1,7 @@
-import { BasketService } from './../../basket.service';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Component, Input, OnInit } from '@angular/core';
 import { Dish } from '../../types/dish';
+import { BasketService } from './../../basket.service';
 
 @Component({
   selector: 'app-content',
@@ -15,6 +15,10 @@ export class ContentComponent implements OnInit {
   constructor(private basketService: BasketService) { }
 
   ngOnInit(): void {
+  }
+
+  deleteDish(id: string): void {
+    this.basketService.removeDishinBasket(id);
   }
 
 }
