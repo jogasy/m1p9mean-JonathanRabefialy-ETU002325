@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { IDish } from "../interfaces/Idish";
+import { IOrder } from "../interfaces/Iorder";
 
 const OrderSchema: Schema = new Schema (
     {
@@ -9,10 +10,11 @@ const OrderSchema: Schema = new Schema (
         hour: { type: Number , required: true },
         note: { type: String , required: true },
         status: { type: Number , required: true },
+        dish: { type: [], required: true}
     },
     {
         timestamps : true
     }
 );
 
-export default mongoose.model<IDish>('dish', OrderSchema);
+export default mongoose.model<IOrder>('order', OrderSchema);

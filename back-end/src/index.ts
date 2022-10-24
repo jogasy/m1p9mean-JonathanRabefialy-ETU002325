@@ -4,10 +4,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import configMongo from './configMongo';
 import mongoose from 'mongoose';
-import clientRoute from './route/ClientRoute';
-import commandRoute from './route/CommandRoute';
-import platRoute from './route/PlatRoute';
-import restaurantRoute from './route/RestaurantRoute';
+import dishRoute from './route/DishRoute';
+import orderRoute from './route/OrderRoute';
+import userRoute from './route/UserRoute';
 import path from 'path';
 import bodyParser from 'body-parser';
 
@@ -17,7 +16,6 @@ class Server {
 	constructor() {
 		this.app = express();
 		dotenv.config();
-		//console.log(process.env.portApplication);
 		this.portNumber = parseInt(process.env.portApplication!);
 		this.config();
 		this.routes();
@@ -41,10 +39,9 @@ class Server {
 	}
 
 	public routes(): void {
-		this.app.use('/clients', clientRoute);
-		this.app.use('/commands', commandRoute);
-		this.app.use('/plats', platRoute);
-		this.app.use('/restaurants', restaurantRoute);
+		this.app.use('/dish', dishRoute);
+		this.app.use('/order', orderRoute);
+		this.app.use('/user', userRoute);
 	}
 
 	public start(): void {

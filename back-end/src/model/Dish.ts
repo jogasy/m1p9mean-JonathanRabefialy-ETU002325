@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { IDish } from "../interfaces/Idish";
 import { IOrder } from "../interfaces/Iorder";
 
 const DishSchema: Schema = new Schema (
@@ -9,11 +10,10 @@ const DishSchema: Schema = new Schema (
         price: { type: Number , required: true },
         status: { type: String , required: true },
         qty: { type: Number , required: true },
-        dish: { type: [], required: true}
     },
     {
         timestamps : true
     }
 );
 
-export default mongoose.model<IOrder>('order', DishSchema);
+export default mongoose.model<IDish>('dish', DishSchema);
