@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { filter, map, Observable, of } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { map, Observable, of } from 'rxjs';
+import { Orders } from './../../store/order/orders.actions';
 import { Dish } from './types/dish';
 
 @Injectable({
@@ -40,12 +42,18 @@ export class HomeService {
       status: 1
     }
   ]
-  constructor() { }
+
+  constructor(private store: Store) { }
 
   getData(): Observable<Dish[]> {
     return of(this.data)
         .pipe(
           map(x => x.filter(x => x.status === 1))
         );
+  }
+
+  createBasket(val: Dish) {
+    const dish = { ...val , qty: 1};
+    return this.store.dispatch(new Orders.CreateBasket(dish));
   }
 }
