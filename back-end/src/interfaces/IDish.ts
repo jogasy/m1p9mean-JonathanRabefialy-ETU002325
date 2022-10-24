@@ -7,4 +7,5 @@ export interface IDish extends Document {
   price: number;
   status: number;
   qty?: number;
+  imgPath: string;
 }

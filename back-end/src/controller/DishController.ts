@@ -21,7 +21,8 @@ class DishController {
             let body = JSON.parse(req.body.dish);
             let imgPath = `${process.env.pathImg}${req.file?.filename}`;
             let dishes = {
-                "img": imgPath,
+                "imgPath": imgPath,
+                "img": body.img,
                 "name": body.name,
                 "ingredients": body.ingredients,
                 "price": body.price,
