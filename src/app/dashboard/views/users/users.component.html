@@ -1,44 +1,86 @@
-<table class="table table-sm w-50">
-  <thead>
-    <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Role</th>
-      <th scope="col">Password</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>
-        <select class="form-select form-select-sm">
-          <option selected>Open this select menu</option>
-          <option value="1">Admin</option>
-          <option value="2">Livreur</option>
-        </select>
-      </td>
-      <td>@mdosqdfq</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>
-        <select class="form-select form-select-sm">
-          <option selected>Open this select menu</option>
-          <option value="1">Admin</option>
-          <option value="2">Livreur</option>
-        </select>
-      </td>
-      <td>@faqsdft</td>
-    </tr>
-    <tr>
-      <td>Larry the Bird</td>
-      <td>
-        <select class="form-select form-select-sm">
-          <option selected>Open this select menu</option>
-          <option value="1">Admin</option>
-          <option value="2">Livreur</option>
-        </select>
-      </td>
-      <td>@twiqsdftter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="center-div">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Role</th>
+        <th scope="col">Password</th>
+        <th scope="col">
+          <a class="btn btn-primary btn-sm" role="button" (click)="modifyUser(modal)">+ Ajouter</a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mark</td>
+        <td>
+          <select class="form-select form-select-sm">
+            <option selected>Open this select menu</option>
+            <option value="1">Admin</option>
+            <option value="2">Livreur</option>
+          </select>
+        </td>
+        <td>@mdosqdfq</td>
+        <td>
+          <a class="btn btn-sm bg-white" role="button">
+            <em appFeatherIcons data-feather="edit-2"></em>
+          </a>
+          <a class="btn btn-sm bg-white" role="button">
+            <em appFeatherIcons data-feather="trash-2" color="red"></em>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Jacob</td>
+        <td>
+          <select class="form-select form-select-sm">
+            <option selected>Open this select menu</option>
+            <option value="1">Admin</option>
+            <option value="2">Livreur</option>
+          </select>
+        </td>
+        <td>@faqsdft</td>
+        <td>
+          <a class="btn btn-sm bg-white" role="button">
+            <em appFeatherIcons data-feather="edit-2"></em>
+          </a>
+          <a class="btn btn-sm bg-white" role="button">
+            <em appFeatherIcons data-feather="trash-2" color="red"></em>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Larry the Bird</td>
+        <td>
+          <select class="form-select form-select-sm">
+            <option selected>Open this select menu</option>
+            <option value="1">Admin</option>
+            <option value="2">Livreur</option>
+          </select>
+        </td>
+        <td>@twiqsdftter</td>
+        <td>
+          <a class="btn btn-sm bg-white" role="button">
+            <em appFeatherIcons data-feather="edit-2"></em>
+          </a>
+          <a class="btn btn-sm bg-white" role="button">
+            <em appFeatherIcons data-feather="trash-2" color="red"></em>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.hide()"></button>
+  </div>
+  <div class="modal-body">
+      This is a sample modal dialog box.
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+  </div>
+</ng-template>
