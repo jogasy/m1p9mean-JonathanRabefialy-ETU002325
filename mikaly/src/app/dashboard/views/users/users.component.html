@@ -1,0 +1,60 @@
+<div class="center-div">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">Nom</th>
+        <th scope="col" class="text-center">Role</th>
+        <th scope="col" class="text-center">Password</th>
+        <th scope="col" class="text-center">
+          <a class="btn btn-primary btn-sm" role="button" (click)="modifyUser(modal)">+ Ajouter</a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-center">Mark</td>
+        <td class="text-center">
+          Admin
+        </td>
+        <td class="text-center">@mdosqdfq</td>
+        <td class="text-center">
+          <a class="btn btn-sm bg-white" role="button">
+            <em appFeatherIcons data-feather="trash-2" color="red"></em>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Ajouter un utilisateur</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.hide()"></button>
+  </div>
+  <div class="modal-body">
+      <div class="form">
+        <div class="mb-3">
+          <label for="" class="form-label">Nom</label>
+          <input type="text"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Role</label>
+          <select class="form-select form-select-sm w-100">
+            <option selected>Selectionner un role</option>
+            <option value="1">Admin</option>
+            <option value="2">Livreur</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Mot de passe</label>
+          <input type="text"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+        </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-primary">Ajouter</button>
+  </div>
+</ng-template>

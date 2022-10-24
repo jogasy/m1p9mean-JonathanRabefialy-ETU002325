@@ -1,0 +1,10 @@
+<div class="d-flex">
+  <button class="btn btn-sm bg-gray fw-bold action-button shadow-sm rounded-3" type="button" (click)="changeQuantity(-1)">
+    -
+  </button>
+  <input disabled autocomplete="off" ref="quantityInput" type="string"
+       [ngModel]="localQt" name="quantity" class="form-control border-0 input-width text-center p-0 shadow-none bg-light fw-bold" />
+  <button class="btn btn-sm bg-gray fw-bold action-button rounded-3 shadow-sm" type="button" (click)="changeQuantity(1)">
+    +
+  </button>
+</div>

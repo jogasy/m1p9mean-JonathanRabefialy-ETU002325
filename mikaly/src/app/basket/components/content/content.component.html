@@ -1,0 +1,34 @@
+<table class="table w-100">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center">#</th>
+      <th scope="col" class="text-center">Plat</th>
+      <th scope="col" class="text-center">Ingrédients</th>
+      <th scope="col" class="text-center">Prix en Ariary</th>
+      <th scope="col">Quantité</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dish of (basket$ | async); let i = index">
+      <th scope="row" class="text-center">{{i + 1}}</th>
+      <td class="text-center">{{dish.name}}</td>
+
+      <td class="text-center">{{dish.ingredients}}</td>
+      <td class="text-center">{{dish.price}}</td>
+      <td>
+        <app-quantity-order [dish]="dish"></app-quantity-order>
+      </td>
+      <td>
+        <a class="btn bg-white btn-sm" role="button" (click)="deleteDish(dish.id)">
+          <em appFeatherIcons data-feather="trash-2"></em>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-end">
+  <div class="text-muted">
+    Total à payer {{totalPrice$ | async}} Ariary
+  </div>
+</div>
