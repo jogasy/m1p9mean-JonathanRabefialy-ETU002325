@@ -1,0 +1,20 @@
+<div class="card mb-3 me-3 col-12">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img [src]="(dish.img)" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{dish.name}}</h5>
+        <p class="card-text"><span class="text-muted small">{{dish.ingredients}}</span></p>
+        <p class="card-text">{{dish.price}} Ariary</p>
+        <div class="float-end mb-3">
+          <div class="d-grid gap-2">
+            <button class="btn btn-outline-secondary" type="button"><em appFeatherIcons data-feather="edit-2"></em></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -29,6 +29,11 @@ const route: Routes = [
         path: 'orders',
         loadChildren: () => import("../dashboard/views/orders/orders.module").then(m => m.OrdersModule),
         canActivate: [AdminGuard]
+      },
+      {
+        path: 'dish',
+        loadChildren: () => import("../dashboard/views/dish/dish.module").then(m => m.DishModule),
+        canActivate: [AdminGuard]
       }
     ]
   }
