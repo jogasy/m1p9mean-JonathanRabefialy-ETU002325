@@ -1,3 +1,4 @@
+import { HomeService } from './../../home.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Dish } from '../../types/dish';
 
@@ -8,13 +9,16 @@ import { Dish } from '../../types/dish';
 })
 export class CardComponent implements OnInit {
   @Input() dish?: Dish;
-  constructor() { }
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
   }
 
-  addToBasket() {
-
+  addToBasket(dish?: Dish) {
+    console.log("dish", dish);
+    if(dish){
+      this.homeService.createBasket(dish).subscribe();
+    }
   }
 
 }

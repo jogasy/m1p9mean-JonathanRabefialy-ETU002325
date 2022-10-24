@@ -8,7 +8,7 @@
         <h5 class="card-title">{{dish?.name}}</h5>
         <p class="card-text"><span class="text-muted small">{{dish?.ingredients}}</span></p>
         <p class="card-text">{{dish?.price}} Ariary</p>
-        <a class="btn btn-primary btn-sm float-end mb-3" role="button" (click)="addToBasket()">Ajouter au panier </a>
+        <a class="btn btn-primary btn-sm float-end mb-3" role="button" (click)="addToBasket(dish)">Ajouter au panier </a>
       </div>
     </div>
   </div>
