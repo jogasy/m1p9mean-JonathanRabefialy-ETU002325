@@ -31,4 +31,8 @@ export class BasketService {
                 map(filterFn => filterFn(id))
               );
   }
+
+  resetBasket(): void {
+    this.store.dispatch(new Orders.ResetOrder());
+  }
 }

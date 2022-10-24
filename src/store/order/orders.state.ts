@@ -71,4 +71,9 @@ export class OrdersState {
       );
   }
 
+  @Action(Orders.ResetBasket)
+  resetBasket(ctx: StateContext<OrdersStateModel>): void {
+    ctx.setState(defaultValue);
+  }
+
 }

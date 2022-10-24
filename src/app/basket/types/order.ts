@@ -2,9 +2,10 @@ import { Dish } from "./dish";
 
 export interface Order {
   name: string;
-  tel: number;
+  phoneNumber: string;
   address: string;
   hour: number;
   note: string;
+  status: number;
   basket: Dish[];
 }
