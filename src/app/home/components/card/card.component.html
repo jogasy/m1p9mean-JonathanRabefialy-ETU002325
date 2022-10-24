@@ -1,14 +1,14 @@
-<div class="card mb-3 me-3 col-3">
+<div class="card mb-3 me-3 col-12">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+      <img [src]="dish?.img" class="img-fluid rounded-start" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">name</h5>
-        <p class="card-text">description</p>
-        <p class="card-text"><small class="text-muted">Price</small></p>
-        <a class="btn btn-primary btn-sm float-end mb-3" role="button">Ajouter au panier </a>
+        <h5 class="card-title">{{dish?.name}}</h5>
+        <p class="card-text"><span class="text-muted small">{{dish?.ingredients}}</span></p>
+        <p class="card-text">{{dish?.price}} Ariary</p>
+        <a class="btn btn-primary btn-sm float-end mb-3" role="button" (click)="addToBasket()">Ajouter au panier </a>
       </div>
     </div>
   </div>
