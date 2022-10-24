@@ -1,13 +1,14 @@
+import { OrdersState } from 'src/store/order/orders.state';
 import { Injectable } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { map, Observable, of } from 'rxjs';
 import { Orders } from './../../store/order/orders.actions';
 import { Dish } from './types/dish';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HomeService {
+  @Select(OrdersState.shoppingCount) shoppingCount$!: Observable<number>;
+
   data: Dish[] = [
     {
       id: "0",

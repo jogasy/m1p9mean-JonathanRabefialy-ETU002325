@@ -7,12 +7,12 @@ import { Dish } from '../../types/dish';
   styleUrls: ['./quantity-order.component.scss']
 })
 export class QuantityOrderComponent implements OnInit {
-  @Input() dish!: Dish;
+  @Input() id: string = '';
   localQt?: number;
   constructor() { }
 
   ngOnInit(): void {
-    this.localQt = this.dish.qty;
+    this.localQt = ;
   }
 
   remove() {}

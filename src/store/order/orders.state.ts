@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext } from "@ngxs/store";
+import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { append, patch , removeItem, updateItem } from "@ngxs/store/operators";
 import { Dish } from 'src/app/home/types/dish';
 import { Orders } from './orders.actions';
@@ -17,6 +17,32 @@ const defaultValue: OrdersStateModel = {
 
 @Injectable()
 export class OrdersState {
+
+  @Selector()
+  static basket(state: OrdersStateModel): Dish[] {
+      return state.basket ?? [];
+  }
+
+  @Selector()
+  static orderItem(state: OrdersStateModel): (id: string) => Dish | undefined {
+      return (itemId: string): Dish | undefined => {
+          return state.basket?.find(x => x.id === itemId);
+      };
+  }
+
+  @Selector()
+  static shoppingCount(state: OrdersStateModel): number {
+      return state.basket?.length ?? 0;
+  }
+
+  @Selector()
+  static totalPrice(state: OrdersStateModel) {
+    let total = 0;
+      state.basket?.map((x) => {
+        total += x.price * x.qty!;
+      })
+    return total;
+  }
 
   @Action(Orders.UpdateBasket)
   updateOrderItem(ctx: StateContext<OrdersStateModel>, payload: Orders.UpdateBasket): void {

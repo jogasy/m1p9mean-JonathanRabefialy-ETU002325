@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FeatherIconsModule } from 'src/shared/feather-icons/feather-icons.module';
 import { BasketComponent } from './basket.component';
+import { BasketService } from './basket.service';
 import { ContentComponent } from './components/content/content.component';
 import { DataComponent } from './components/data/data.component';
 import { QuantityOrderComponent } from './components/quantity-order/quantity-order.component';
@@ -29,6 +30,7 @@ const route: Routes = [
     FormsModule,
     RouterModule.forChild(route),
     FeatherIconsModule
-  ]
+  ],
+  providers: [BasketService]
 })
 export class BasketModule { }
