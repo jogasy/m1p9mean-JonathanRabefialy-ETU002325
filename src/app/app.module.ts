@@ -8,6 +8,7 @@ import { OrdersState } from 'src/store/order/orders.state';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthState } from 'src/store/auth/auth.state';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,16 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     NgxsModule.forRoot([
-      OrdersState
+      OrdersState,
+      AuthState
     ], { developmentMode: !environment.production }),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production
     }),
     NgxsStoragePluginModule.forRoot({
       key: [
-        OrdersState
+        OrdersState,
+        AuthState
       ],
       storage: StorageOption.LocalStorage
     })

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
+import { DashboardService } from './dashboard.service';
+import { AdminGuard } from './guards/admin.guard';
 
 const route: Routes = [
   {
@@ -16,7 +18,8 @@ const route: Routes = [
       },
       {
         path: 'users',
-        loadChildren: () => import("../dashboard/views/users/users.module").then(m => m.UsersModule)
+        loadChildren: () => import("../dashboard/views/users/users.module").then(m => m.UsersModule),
+        canActivate: [AdminGuard]
       },
       {
         path: 'delivery',
@@ -24,7 +27,8 @@ const route: Routes = [
       },
       {
         path: 'orders',
-        loadChildren: () => import("../dashboard/views/orders/orders.module").then(m => m.OrdersModule)
+        loadChildren: () => import("../dashboard/views/orders/orders.module").then(m => m.OrdersModule),
+        canActivate: [AdminGuard]
       }
     ]
   }
@@ -37,6 +41,7 @@ const route: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(route)
-  ]
+  ],
+  providers: [DashboardService]
 })
 export class DashboardModule { }

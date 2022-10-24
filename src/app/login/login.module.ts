@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginService } from './login.service';
 
 const route : Routes = [
   {
@@ -19,6 +20,7 @@ const route : Routes = [
     CommonModule,
     FormsModule,
     RouterModule.forChild(route)
-  ]
+  ],
+  providers: [LoginService]
 })
 export class LoginModule { }

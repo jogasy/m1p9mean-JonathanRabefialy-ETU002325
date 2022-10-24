@@ -6,9 +6,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" aria-current="page" routerLink="orders">Commandes</a>
+        <a *ngIf="(type$ | async) === 0" class="nav-link" aria-current="page" routerLink="orders">Commandes</a>
         <a class="nav-link" routerLink="delivery">Livreurs</a>
-        <a class="nav-link" routerLink="users">Utilisateurs</a>
+        <a *ngIf="(type$ | async) === 0" class="nav-link" routerLink="users">Utilisateurs</a>
       </div>
     </div>
   </div>

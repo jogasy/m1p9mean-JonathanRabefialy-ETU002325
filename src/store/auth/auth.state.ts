@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { patch, updateItem } from '@ngxs/store/operators';
-import { Profile } from 'src/app/login/types/profile';
 import { Auth } from './auth.action';
 import { AuthModel } from './auth.model';
 
@@ -24,9 +22,14 @@ export class AuthState {
   }
 
   @Selector()
-  static auth(state: AuthModel): AuthModel | undefined {
-    return state;
+  static auth(state: AuthModel): number | undefined {
+    return state.type;
   }
+
+  @Action(Auth.SetAuth)
+    set(ctx: StateContext<AuthModel>, payload: Auth.SetAuth): void {
+        ctx.setState(payload.auth);
+    }
 
   @Action(Auth.UpdateAuth)
   updateOrderItem(ctx: StateContext<AuthModel>, payload: Auth.UpdateAuth): void {
