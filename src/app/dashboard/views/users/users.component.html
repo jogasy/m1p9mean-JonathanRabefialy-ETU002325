@@ -14,55 +14,10 @@
       <tr>
         <td>Mark</td>
         <td>
-          <select class="form-select form-select-sm">
-            <option selected>Open this select menu</option>
-            <option value="1">Admin</option>
-            <option value="2">Livreur</option>
-          </select>
+          Admin
         </td>
         <td>@mdosqdfq</td>
         <td>
-          <a class="btn btn-sm bg-white" role="button">
-            <em appFeatherIcons data-feather="edit-2"></em>
-          </a>
-          <a class="btn btn-sm bg-white" role="button">
-            <em appFeatherIcons data-feather="trash-2" color="red"></em>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Jacob</td>
-        <td>
-          <select class="form-select form-select-sm">
-            <option selected>Open this select menu</option>
-            <option value="1">Admin</option>
-            <option value="2">Livreur</option>
-          </select>
-        </td>
-        <td>@faqsdft</td>
-        <td>
-          <a class="btn btn-sm bg-white" role="button">
-            <em appFeatherIcons data-feather="edit-2"></em>
-          </a>
-          <a class="btn btn-sm bg-white" role="button">
-            <em appFeatherIcons data-feather="trash-2" color="red"></em>
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>Larry the Bird</td>
-        <td>
-          <select class="form-select form-select-sm">
-            <option selected>Open this select menu</option>
-            <option value="1">Admin</option>
-            <option value="2">Livreur</option>
-          </select>
-        </td>
-        <td>@twiqsdftter</td>
-        <td>
-          <a class="btn btn-sm bg-white" role="button">
-            <em appFeatherIcons data-feather="edit-2"></em>
-          </a>
           <a class="btn btn-sm bg-white" role="button">
             <em appFeatherIcons data-feather="trash-2" color="red"></em>
           </a>
@@ -74,13 +29,32 @@
 
 <ng-template #modal>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
+    <h4 class="modal-title pull-left">Ajouter un utilisateur</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.hide()"></button>
   </div>
   <div class="modal-body">
-      This is a sample modal dialog box.
+      <div class="form">
+        <div class="mb-3">
+          <label for="" class="form-label">Nom</label>
+          <input type="text"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Role</label>
+          <select class="form-select form-select-sm w-100">
+            <option selected>Open this select menu</option>
+            <option value="1">Admin</option>
+            <option value="2">Livreur</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Mot de passe</label>
+          <input type="text"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+        </div>
+      </div>
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+      <button type="button" class="btn btn-primary">Ajouter</button>
   </div>
 </ng-template>
