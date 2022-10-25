@@ -65,10 +65,10 @@ export class DishComponent implements OnInit, OnDestroy {
         .pipe(
           takeUntil(this.unsuscribe$)
         )
-        .subscribe(console.log);
+        .subscribe(x =>  this.getData());
     this.resetData();
-    this.getData();
     this.modalRef.hide();
+
   }
 
   private getData(): void {

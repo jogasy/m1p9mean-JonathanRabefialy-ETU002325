@@ -1,7 +1,7 @@
 <app-top-bar></app-top-bar>
 <div class="container-fluid">
   <div class="row p-3">
-    <div class="col" *ngFor="let item of (data$ | async)">
+    <div class="col-12 col-md-4 col-sm-6 col-lg-4 col-xl-4 col-xxl-3" *ngFor="let item of (data$ | async)">
       <app-card [dish]="item"></app-card>
     </div>
   </div>
