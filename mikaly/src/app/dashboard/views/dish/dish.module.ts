@@ -5,6 +5,7 @@ import { DishComponent } from './dish.component';
 import { CardComponent } from './components/card/card.component';
 import { FeatherIconsModule } from 'src/shared/feather-icons/feather-icons.module';
 import { DishService } from './dish.service';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 const route: Routes = [
   {
@@ -21,8 +22,9 @@ const route: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(route),
-    FeatherIconsModule
+    FeatherIconsModule,
+    ModalModule
   ],
-  providers: [DishService]
+  providers: [DishService, BsModalService]
 })
 export class DishModule { }
