@@ -13,6 +13,7 @@ class DishRoute {
     public config():void {
         this.routes.get('/', dishController.getAllDish);
         this.routes.post('/', storage, dishController.insertDish);
+        this.routes.put('/:id', dishController.putDish);
     }
 }
 

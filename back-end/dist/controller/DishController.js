@@ -27,6 +27,32 @@ class DishController {
             });
         });
     }
+    putDish(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const id = req.params.id;
+                const body = req.body;
+                console.log("id", id);
+                console.log("body", body);
+                let upd = yield Dish_1.default.updateOne({ _id: id }, body);
+                res.status(200).json({
+                    dish: upd
+                });
+            }
+            catch (error) {
+                console.log("error");
+            }
+        });
+    }
+    putImgDish(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let dishes = yield Dish_1.default.find();
+            res.status(200).json({
+                dishes: dishes,
+                len: dishes.length
+            });
+        });
+    }
     insertDish(req, res) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {

@@ -14,6 +14,7 @@ class DishRoute {
     config() {
         this.routes.get('/', DishController_1.default.getAllDish);
         this.routes.post('/', storage_1.default, DishController_1.default.insertDish);
+        this.routes.put('/:id', DishController_1.default.putDish);
     }
 }
 let dishRoute = new DishRoute();

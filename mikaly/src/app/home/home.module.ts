@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -27,6 +28,7 @@ const route: Routes = [
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forChild(route),
     FeatherIconsModule

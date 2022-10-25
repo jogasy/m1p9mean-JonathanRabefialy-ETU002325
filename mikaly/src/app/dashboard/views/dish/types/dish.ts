@@ -5,6 +5,6 @@ export interface Dish {
   name: string;
   ingredients: string;
   price: number;
-  status: number;
+  status: string;
   qty?: number;
 }

@@ -6,7 +6,36 @@ class DishController {
     constructor(){
         dotenv.config();
     }
+    
     public async getAllDish(req: Request, res: Response) {
+        let dishes = await dish.find();
+        res.status(200).json(
+            {
+                dishes : dishes,
+                len : dishes.length
+            }
+        );  
+    }
+
+    public async putDish(req: Request, res: Response) {
+        try {
+            const id = req.params.id;
+            const body = req.body;
+            console.log("id" ,id);
+            console.log("body", body);
+            let upd = await dish.updateOne({ _id: id}, body);
+            res.status(200).json(
+                {
+                    dish : upd
+                }
+            );  
+        } catch (error) {
+            console.log("error");
+        }
+       
+    }
+
+    public async putImgDish(req: Request, res: Response) {
         let dishes = await dish.find();
         res.status(200).json(
             {

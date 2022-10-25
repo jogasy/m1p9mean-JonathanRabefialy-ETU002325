@@ -1,8 +1,8 @@
-import { DishService } from './dish.service';
-import { Component, OnInit, TemplateRef, ViewChild, ElementRef, OnDestroy, AfterViewInit, ContentChild, AfterContentInit } from '@angular/core';
-import { Dish } from './types/dish';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Subject, takeUntil } from 'rxjs';
+import { DishService } from './dish.service';
+import { Dish } from './types/dish';
 
 @Component({
   selector: 'app-dish',
@@ -23,7 +23,7 @@ export class DishComponent implements OnInit, OnDestroy {
     ingredients: '',
     name: '',
     price: 0,
-    status: 0
+    status: ''
   };
 
   private unsuscribe$ : Subject<void> = new Subject();
@@ -60,7 +60,7 @@ export class DishComponent implements OnInit, OnDestroy {
 
   saveDish(): void {
     this.dish.img = this.fileName;
-    this.dish.status = +this.isAvailable;
+    this.dish.status = this.isAvailable;
     this.service.postDish(this.dish, this.file)
         .pipe(
           takeUntil(this.unsuscribe$)
@@ -87,7 +87,7 @@ export class DishComponent implements OnInit, OnDestroy {
       ingredients: '',
       name: '',
       price: 0,
-      status: 0
+      status: ''
     };
     this.fileName = "";
     this.imageData = "";

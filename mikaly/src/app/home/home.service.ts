@@ -1,67 +1,30 @@
+import { environment } from './../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { OrdersState } from 'src/store/order/orders.state';
 import { Injectable } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { map, Observable, of } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { Orders } from './../../store/order/orders.actions';
 import { Dish } from './types/dish';
 
 @Injectable()
 export class HomeService {
+  readonly api = environment.api;
   @Select(OrdersState.shoppingCount) shoppingCount$!: Observable<number>;
 
-  data: Dish[] = [
-    {
-      _id: "0",
-      img: "../../assets/placeholder.jpg",
-      imgPath: "",
-      ingredients: "tomate, viande , fromage",
-      name: 'Jambon',
-      price: 54,
-      status: 1
-    },
-    {
-      _id: "1",
-      img: "../../assets/placeholder.jpg",
-      imgPath: "",
-      ingredients: "tomate, viande , fromage",
-      name: 'Jambon',
-      price: 54,
-      status: 1
-    },
-    {
-      _id: "2",
-      img: "../../assets/placeholder.jpg",
-      imgPath: "",
-      ingredients: "tomate, viande , fromage",
-      name: 'Jambon',
-      price: 54,
-      status: 0
-    },
-    {
-      _id: "3",
-      img: "../../assets/placeholder.jpg",
-      imgPath: "",
-      ingredients: "tomate, viande , fromage",
-      name: 'Jambon',
-      price: 54,
-      status: 1
-    }
-  ]
+  constructor(private store: Store, private http: HttpClient) { }
 
-  constructor(private store: Store) { }
+  getData(): Observable<any> {
+    return this.http.get<any>(this.api + '/dish').pipe(
+      map(x => x.dishes.filter( (x: any) => x.status === '0'))
+    );;
+  }
 
   getDishInBasket(id: string): Observable<Dish | undefined> {
     return this.store.select(OrdersState.getDish)
               .pipe(
                 map(filterFn => filterFn(id))
               );
-  }
-
-  getData(): Observable<Dish[]> {
-    return of(this.data)
-        .pipe(
-          map(x => x.filter(x => x.status === 1))
-        );
   }
 
   createBasket(val: Dish) {

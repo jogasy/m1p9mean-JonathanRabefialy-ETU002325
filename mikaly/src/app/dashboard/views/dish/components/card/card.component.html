@@ -28,33 +28,38 @@
       <div class="mb-3">
         <label for="name" class="form-label">Nom</label>
         <input type="text"
-          class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="">
+          class="form-control" name="name" [(ngModel)]="updateDish.name" id="name" aria-describedby="helpId" placeholder="">
       </div>
       <div class="mb-3">
         <label for="ingredients" class="form-label">Ingredients</label>
-        <textarea class="form-control" name="ingredients" id="ingredients" rows="3" maxlength="400"></textarea>
+        <textarea class="form-control" name="ingredients" [(ngModel)]="updateDish.ingredients" id="ingredients" rows="3" maxlength="400"></textarea>
       </div>
       <div class="mb-3">
-        <label for="formFile" class="form-label"></label>
-        <input class="form-control" type="file" id="formFile">
+        <div>
+          <label for="formFile" class="form-label"></label>
+          <input class="form-control" type="file" id="formFile" (change)="onFileSelected($event)">
+        </div>
+        <div class="mb-1">
+          <img [src]="imageData" alt="">
+        </div>
       </div>
       <div class="mb-3">
         <label for="prix" class="form-label">Prix</label>
-        <input type="number"
+        <input type="number" [(ngModel)]="updateDish.price"
           class="form-control" name="prix" id="prix" aria-describedby="helpId" placeholder="">
       </div>
       <div class="btn-group mb-3 d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+        <input type="radio" class="btn-check" value="0" name="btnradio" id="btnradio1" autocomplete="off" [(ngModel)]="updateDish.status">
         <label class="btn btn-outline-primary" for="btnradio1">disponible</label>
 
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+        <input type="radio" class="btn-check" value="1" name="btnradio" [(ngModel)]="updateDish.status" id="btnradio2" autocomplete="off">
         <label class="btn btn-outline-primary" for="btnradio2">indisponible</label>
       </div>
 
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary">Enregistrer</button>
+    <button type="button" class="btn btn-primary" (click)="update(updateDish)" >Enregistrer</button>
   </div>
 
 </ng-template>
