@@ -45,7 +45,7 @@ class Server {
 	}
 
 	public start(): void {
-		let serve = this.app.listen(this.app.get('port'), ()  => {
+		this.app.listen(this.app.get('port'), ()  => {
 			console.log('Serveur sur le port '+this.app.get('port'));
 		});
 	}
