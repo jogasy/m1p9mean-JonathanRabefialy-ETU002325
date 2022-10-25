@@ -14,10 +14,6 @@ class Storage {
                 cb(null, "./images");
             },
             filename: (req, file, cb) => {
-                //console.log("file", file);
-                //console.log("file.mimetype", file.mimetype);
-                // const mimeType = file.mimetype.split('/');
-                //const fileType = mimeType[1];
                 const fileName = file.originalname;
                 console.log("filename", fileName);
                 cb(null, fileName);

@@ -9,17 +9,15 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const configMongo_1 = __importDefault(require("./configMongo"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const ClientRoute_1 = __importDefault(require("./route/ClientRoute"));
-const CommandRoute_1 = __importDefault(require("./route/CommandRoute"));
-const PlatRoute_1 = __importDefault(require("./route/PlatRoute"));
-const RestaurantRoute_1 = __importDefault(require("./route/RestaurantRoute"));
+const DishRoute_1 = __importDefault(require("./route/DishRoute"));
+const OrderRoute_1 = __importDefault(require("./route/OrderRoute"));
+const UserRoute_1 = __importDefault(require("./route/UserRoute"));
 const path_1 = __importDefault(require("path"));
 const body_parser_1 = __importDefault(require("body-parser"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
         dotenv_1.default.config();
-        console.log(process.env.portApplication);
         this.portNumber = parseInt(process.env.portApplication);
         this.config();
         this.routes();
@@ -41,13 +39,12 @@ class Server {
         });
     }
     routes() {
-        this.app.use('/clients', ClientRoute_1.default);
-        this.app.use('/commands', CommandRoute_1.default);
-        this.app.use('/plats', PlatRoute_1.default);
-        this.app.use('/restaurants', RestaurantRoute_1.default);
+        this.app.use('/dish', DishRoute_1.default);
+        this.app.use('/order', OrderRoute_1.default);
+        this.app.use('/user', UserRoute_1.default);
     }
     start() {
-        let serve = this.app.listen(this.app.get('port'), () => {
+        this.app.listen(this.app.get('port'), () => {
             console.log('Serveur sur le port ' + this.app.get('port'));
         });
     }
