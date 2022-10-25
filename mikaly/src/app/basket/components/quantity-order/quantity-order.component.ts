@@ -59,6 +59,7 @@ export class QuantityOrderComponent implements OnInit {
             id: this.dish.id,
             name: this.dish.name,
             img: this.dish.img,
+            imgPath: this.dish.imgPath,
             ingredients: this.dish.ingredients,
             price: this.dish.price,
             status: this.dish.status,
