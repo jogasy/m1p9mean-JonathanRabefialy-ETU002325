@@ -14,7 +14,7 @@
 <ng-template #addDish>
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalLabel">Ajouter un plat</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="modalRef.hide()" aria-label="Close"></button>
   </div>
   <div class="modal-body">
     <div class="form">
@@ -25,18 +25,18 @@
       </div>
       <div class="mb-3">
         <label for="ingredients" class="form-label">Ingredients</label>
-        <textarea name="ingredients" id="ingredients" cols="30" rows="10"></textarea>
+        <textarea class="form-control" name="ingredients" id="ingredients" rows="3" maxlength="400"></textarea>
       </div>
       <div class="mb-3">
-        <label for="formFile" class="form-label">importer une image</label>
+        <label for="formFile" class="form-label"></label>
         <input class="form-control" type="file" id="formFile">
       </div>
       <div class="mb-3">
         <label for="prix" class="form-label">Prix</label>
-        <input type="text"
+        <input type="number"
           class="form-control" name="prix" id="prix" aria-describedby="helpId" placeholder="">
       </div>
-      <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+      <div class="btn-group mb-3 d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
         <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
         <label class="btn btn-outline-primary" for="btnradio1">disponible</label>
 
@@ -49,7 +49,5 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-primary">Enregistrer</button>
   </div>
-
-
 
 </ng-template>

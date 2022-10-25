@@ -30,8 +30,8 @@ mikaly/yarn-error.log
 .history/*
 
 # Miscellaneous
-/mikaly/.angular/cache/
-/mikaly/.sass-cache/
+mikaly/.angular/cache/
+mikaly/.sass-cache/
 miklay/connect.lock
 mikaly/coverage
 mikaly/libpeerconnection.log

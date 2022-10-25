@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Dish } from 'src/app/home/types/dish';
 
@@ -10,10 +11,10 @@ import { Dish } from 'src/app/home/types/dish';
 export class CardComponent implements OnInit {
 
   @Input() dish!: Dish;
-
+  modalRef!: BsModalRef;
   private unsuscribe$ : Subject<void> = new Subject();
 
-  constructor() { }
+  constructor(private modalService: BsModalService) { }
 
   ngOnDestroy(): void {
     this.unsuscribe$.next();
@@ -24,4 +25,7 @@ export class CardComponent implements OnInit {
 
   }
 
+  openModifyDish(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template);
+  }
 }
