@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, OnDestroy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Subject, takeUntil } from 'rxjs';
 import { User } from './types/user';
@@ -9,7 +9,7 @@ import { UsersService } from './users.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
   users: User[]= [];
   modalRef!: BsModalRef;
   newUser!: User;
@@ -17,6 +17,10 @@ export class UsersComponent implements OnInit {
   private unsuscribe$ : Subject<void> = new Subject();
 
   constructor(private modalService: BsModalService, private service: UsersService) {}
+  ngOnDestroy(): void {
+    this.unsuscribe$.next();
+    this.unsuscribe$.complete();
+  }
 
   private reset() {
     this.service.getUsers()

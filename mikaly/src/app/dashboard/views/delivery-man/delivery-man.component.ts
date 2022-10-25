@@ -24,7 +24,6 @@ export class DeliveryManComponent implements OnInit, OnDestroy {
     .pipe(
       takeUntil(this.unsuscribe$)
     ).subscribe(x => {
-      console.log(x);
       this.ordersReady = [...x.ListOrders.filter((x: Order) => x.status !== "0")];
     })
   }
