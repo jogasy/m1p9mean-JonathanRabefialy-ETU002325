@@ -13,6 +13,7 @@ class UserRoute {
     config() {
         this.routes.get('/', UserController_1.default.getUsers);
         this.routes.post('/', UserController_1.default.insertUser);
+        this.routes.delete('/:id', UserController_1.default.deleteUser);
     }
 }
 let userRoute = new UserRoute();

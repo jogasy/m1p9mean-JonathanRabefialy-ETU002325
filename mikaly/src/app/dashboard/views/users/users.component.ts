@@ -51,7 +51,12 @@ export class UsersComponent implements OnInit {
   }
 
   deleteUser(id: string): void {
-
+    console.log(id);
+    this.service.deleteUser(id)
+      .pipe(
+        takeUntil(this.unsuscribe$)
+      ).subscribe();
+    this.reset();
   }
 
 

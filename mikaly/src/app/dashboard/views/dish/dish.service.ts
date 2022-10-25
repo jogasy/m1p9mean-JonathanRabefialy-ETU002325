@@ -23,7 +23,6 @@ export class DishService {
     const dishToStringify= JSON.stringify(dish);
     formData.append('dish', dishToStringify),
     formData.append('images', img);
-    console.log("formData", formData);
     return this.http.post(this.api + '/dish', formData);
   }
 

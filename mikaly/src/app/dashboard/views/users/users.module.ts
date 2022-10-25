@@ -6,8 +6,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './users.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
-import { RolePipe } from './pipes/role.pipe';
 import { UsersService } from './users.service';
+import { RolePipe } from './pipes/role.pipe';
 
 const route: Routes = [
   {
@@ -19,7 +19,7 @@ const route: Routes = [
 @NgModule({
   declarations: [
     UsersComponent,
-    RolePipe,
+    RolePipe
   ],
   imports: [
     CommonModule,

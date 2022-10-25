@@ -10,6 +10,7 @@ class UserRoute {
     public config(): void {
         this.routes.get('/', userController.getUsers);
         this.routes.post('/', userController.insertUser);
+        this.routes.delete('/:id' ,userController.deleteUser);
     }
 }
 

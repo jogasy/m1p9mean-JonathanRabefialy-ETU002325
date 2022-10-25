@@ -18,8 +18,8 @@
         </td>
         <td class="text-center">{{user.password}}</td>
         <td class="text-center">
-          <a class="btn btn-sm bg-white" role="button">
-            <em appFeatherIcons data-feather="trash-2" color="red" (click)="deleteUser(user._id)"></em>
+          <a class="btn btn-sm bg-white" role="button" (click)="deleteUser(user._id)">
+            <em appFeatherIcons data-feather="trash-2" color="red"></em>
           </a>
         </td>
       </tr>

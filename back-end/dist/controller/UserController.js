@@ -23,6 +23,14 @@ class UserController {
             });
         });
     }
+    deleteUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield User_1.default.deleteOne({ _id: req.params.id });
+            res.status(200).json({
+                message: "delete done"
+            });
+        });
+    }
     insertUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let body = req.body;
