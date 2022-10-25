@@ -28,7 +28,7 @@ export class QuantityOrderComponent implements OnInit, OnDestroy {
   }
 
   private init() : void {
-    this.homeService.getDishInBasket(this.dish!.id)
+    this.homeService.getDishInBasket(this.dish!._id)
     .pipe(
       takeUntil(this.unsuscribe$)
     )
@@ -53,10 +53,10 @@ export class QuantityOrderComponent implements OnInit, OnDestroy {
   changeQuantity(qt: number){
     const val = this.localQt! + qt;
     if(val <= 0) {
-      this.remove(this.dish!.id);
+      this.remove(this.dish!._id);
       this.showQtyOrder = false;
     }else {
-      this.homeService.getDishInBasket(this.dish!.id)
+      this.homeService.getDishInBasket(this.dish!._id)
       .pipe(
         take(1),
         takeUntil(this.unsuscribe$)
@@ -64,7 +64,7 @@ export class QuantityOrderComponent implements OnInit, OnDestroy {
       .subscribe(x => {
         if (this.dish) {
           const dish: Dish = {
-            id: this.dish.id,
+            _id: this.dish._id,
             name: this.dish.name,
             img: this.dish.img,
             imgPath: this.dish.imgPath,
@@ -74,7 +74,7 @@ export class QuantityOrderComponent implements OnInit, OnDestroy {
             qty: val
           }
           if (x) {
-            this.homeService.updateBasket(this.dish!.id, dish);
+            this.homeService.updateBasket(this.dish!._id, dish);
           }
         }
       })

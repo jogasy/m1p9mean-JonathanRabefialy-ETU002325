@@ -26,7 +26,7 @@ export class QuantityOrderComponent implements OnInit {
   }
 
   private init() : void {
-    this.basketService.getDishInBasket(this.dish!.id)
+    this.basketService.getDishInBasket(this.dish!._id)
       .pipe(
         take(1),
         takeUntil(this.unsuscribe$)
@@ -46,9 +46,9 @@ export class QuantityOrderComponent implements OnInit {
   changeQuantity(qt: number){
     const val = this.localQt! + qt;
     if(val <= 0) {
-      this.remove(this.dish!.id);
+      this.remove(this.dish!._id);
     }else {
-      this.basketService.getDishInBasket(this.dish!.id)
+      this.basketService.getDishInBasket(this.dish!._id)
       .pipe(
         take(1),
         takeUntil(this.unsuscribe$)
@@ -56,7 +56,7 @@ export class QuantityOrderComponent implements OnInit {
       .subscribe(x => {
         if (this.dish) {
           const dish: Dish = {
-            id: this.dish.id,
+            _id: this.dish._id,
             name: this.dish.name,
             img: this.dish.img,
             imgPath: this.dish.imgPath,
@@ -66,7 +66,7 @@ export class QuantityOrderComponent implements OnInit {
             qty: val
           }
           if (x) {
-            this.basketService.updateBasket(this.dish!.id, dish);
+            this.basketService.updateBasket(this.dish!._id, dish);
           }
         }
       })

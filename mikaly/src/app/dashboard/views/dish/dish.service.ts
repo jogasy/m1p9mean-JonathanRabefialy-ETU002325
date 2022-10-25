@@ -6,7 +6,7 @@ import { Dish } from './types/dish';
 export class DishService {
   data: Dish[] = [
     {
-      id: "0",
+      _id: "0",
       img: "../../assets/placeholder.jpg",
       imgPath: "",
       ingredients: "tomate, viande , fromage",
@@ -15,7 +15,7 @@ export class DishService {
       status: 1
     },
     {
-      id: "1",
+      _id: "1",
       img: "../../assets/placeholder.jpg",
       imgPath: "",
       ingredients: "tomate, viande , fromage",
@@ -24,7 +24,7 @@ export class DishService {
       status: 1
     },
     {
-      id: "2",
+      _id: "2",
       img: "../../assets/placeholder.jpg",
       imgPath: "",
       ingredients: "tomate, viande , fromage",
@@ -33,7 +33,7 @@ export class DishService {
       status: 0
     },
     {
-      id: "3",
+      _id: "3",
       img: "../../assets/placeholder.jpg",
       imgPath: "",
       ingredients: "tomate, viande , fromage",

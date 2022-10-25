@@ -26,7 +26,7 @@ export class OrdersState {
   @Selector()
   static getDish(state: OrdersStateModel): (id: string) => Dish | undefined {
       return (id: string): Dish | undefined => {
-          return state.basket?.find(x => x.id === id);
+          return state.basket?.find(x => x._id === id);
       };
   }
 
@@ -48,7 +48,7 @@ export class OrdersState {
   updateOrderItem(ctx: StateContext<OrdersStateModel>, payload: Orders.UpdateBasket): void {
         ctx.setState(
             patch({
-              basket: updateItem<Dish>((dish => dish?.id === payload.id), patch(payload.patchData))
+              basket: updateItem<Dish>((dish => dish?._id === payload.id), patch(payload.patchData))
             })
         );
   }
@@ -66,7 +66,7 @@ export class OrdersState {
   removeOrderItem(ctx: StateContext<OrdersStateModel>, payload: Orders.RemoveBasket): void {
       ctx.setState(
           patch({
-              basket: removeItem<Dish>(dish => dish?.id === payload.id)
+              basket: removeItem<Dish>(dish => dish?._id === payload.id)
           })
       );
   }

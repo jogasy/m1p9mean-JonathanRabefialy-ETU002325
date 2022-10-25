@@ -18,7 +18,7 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             let users = yield User_1.default.find();
             res.status(200).json({
-                ListOrders: users,
+                ListUsers: users,
                 len: users.length
             });
         });

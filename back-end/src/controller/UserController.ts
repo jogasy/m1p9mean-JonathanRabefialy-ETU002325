@@ -6,7 +6,7 @@ class UserController {
         let users = await user.find();
         res.status(200).json(
             {
-                ListOrders : users,
+                ListUsers : users,
                 len : users.length
             }
         );  
