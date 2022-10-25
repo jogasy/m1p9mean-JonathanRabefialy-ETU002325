@@ -1,9 +1,12 @@
+import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Dish } from './types/dish';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DishService {
+  readonly api = environment.api;
   data: Dish[] = [
     {
       _id: "0",
@@ -42,9 +45,19 @@ export class DishService {
       status: 1
     }
   ]
-  constructor() { }
+
+  constructor(private http: HttpClient) { }
 
   getData(): Observable<Dish[]> {
     return of(this.data);
+  }
+
+  public postDish(dish: Dish, img: File): Observable<Object> {
+    const formData = new FormData();
+    const dishToStringify= JSON.stringify(dish);
+    formData.append('dish', dishToStringify),
+    formData.append('images', img);
+    console.log("formData", formData);
+    return this.http.post(this.api + '/dish', formData);
   }
 }
