@@ -36,13 +36,28 @@ class DishController {
     }
 
     public async putImgDish(req: Request, res: Response) {
-        let dishes = await dish.find();
-        res.status(200).json(
-            {
-                dishes : dishes,
-                len : dishes.length
-            }
-        );  
+        try {
+            let body = JSON.parse(req.body.dish);
+            let imgPath = `${process.env.pathImg}${req.file?.filename}`;
+            let dishes = {
+                "_id": body._id,
+                "imgPath": imgPath,
+                "img": body.img,
+                "name": body.name,
+                "ingredients": body.ingredients,
+                "price": body.price,
+                "status": body.status,
+                "qty": body.qty
+            };
+            let plats = await dish.updateOne({ _id: body._id}, dishes);  
+            res.status(200).json(
+                {
+                "dish": plats
+                }
+            );
+        } catch (error) {
+            console.log("error", error);
+        } 
     }
 
     public async insertDish(req: Request, res: Response) {

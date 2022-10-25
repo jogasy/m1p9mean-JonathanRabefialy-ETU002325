@@ -14,6 +14,7 @@ class DishRoute {
         this.routes.get('/', dishController.getAllDish);
         this.routes.post('/', storage, dishController.insertDish);
         this.routes.put('/:id', dishController.putDish);
+        this.routes.put('/img/:id', storage, dishController.putImgDish);
     }
 }
 

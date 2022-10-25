@@ -45,12 +45,29 @@ class DishController {
         });
     }
     putImgDish(req, res) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            let dishes = yield Dish_1.default.find();
-            res.status(200).json({
-                dishes: dishes,
-                len: dishes.length
-            });
+            try {
+                let body = JSON.parse(req.body.dish);
+                let imgPath = `${process.env.pathImg}${(_a = req.file) === null || _a === void 0 ? void 0 : _a.filename}`;
+                let dishes = {
+                    "_id": body._id,
+                    "imgPath": imgPath,
+                    "img": body.img,
+                    "name": body.name,
+                    "ingredients": body.ingredients,
+                    "price": body.price,
+                    "status": body.status,
+                    "qty": body.qty
+                };
+                let plats = yield Dish_1.default.updateOne({ _id: body._id }, dishes);
+                res.status(200).json({
+                    "dish": plats
+                });
+            }
+            catch (error) {
+                console.log("error", error);
+            }
         });
     }
     insertDish(req, res) {

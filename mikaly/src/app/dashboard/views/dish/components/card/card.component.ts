@@ -76,6 +76,14 @@ export class CardComponent implements OnInit {
     }else {
       this.updateDish.img = this.fileName;
       this.updateDish.imgPath = "";
+      this.dishService.putImgDish(this.updateDish, this.file)
+        .pipe(
+          takeUntil(this.unsuscribe$)
+        ).subscribe();
+      this.modalRef.hide();
+      this.updateDish.imgPath = this.imageData;
+      this.dish = this.updateDish;
+      this.reset();
     }
   }
 }

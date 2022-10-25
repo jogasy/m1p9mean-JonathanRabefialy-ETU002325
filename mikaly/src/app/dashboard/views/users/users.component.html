@@ -11,15 +11,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="text-center">Mark</td>
+      <tr *ngFor="let user of users">
+        <td class="text-center">{{user.name}}</td>
         <td class="text-center">
-          Admin
+          {{user.role | role }}
         </td>
-        <td class="text-center">@mdosqdfq</td>
+        <td class="text-center">{{user.password}}</td>
         <td class="text-center">
           <a class="btn btn-sm bg-white" role="button">
-            <em appFeatherIcons data-feather="trash-2" color="red"></em>
+            <em appFeatherIcons data-feather="trash-2" color="red" (click)="deleteUser(user._id)"></em>
           </a>
         </td>
       </tr>
@@ -37,24 +37,23 @@
         <div class="mb-3">
           <label for="" class="form-label">Nom</label>
           <input type="text"
-            class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            class="form-control" [(ngModel)]="newUser.name" name="" id="" aria-describedby="helpId" placeholder="">
         </div>
-        <div class="mb-3">
-          <label for="" class="form-label">Role</label>
-          <select class="form-select form-select-sm w-100">
-            <option selected>Selectionner un role</option>
-            <option value="1">Admin</option>
-            <option value="2">Livreur</option>
-          </select>
+        <div class="btn-group mb-3 d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" value="0" name="btnradio" id="btnradio1" autocomplete="off" [(ngModel)]="newUser.role">
+            <label class="btn btn-outline-primary" for="btnradio1">Livreur</label>
+
+            <input type="radio" class="btn-check" value="1" name="btnradio" [(ngModel)]="newUser.role" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">Admin</label>
         </div>
         <div class="mb-3">
           <label for="" class="form-label">Mot de passe</label>
           <input type="text"
-            class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+            class="form-control" name="" [(ngModel)]="newUser.password" id="" aria-describedby="helpId" placeholder="">
         </div>
       </div>
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-primary">Ajouter</button>
+      <button type="button" class="btn btn-primary" (click)="addUser()">Enregistrer</button>
   </div>
 </ng-template>
