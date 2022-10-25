@@ -7,6 +7,7 @@ import { CardComponent } from './components/card/card.component';
 import { FeatherIconsModule } from 'src/shared/feather-icons/feather-icons.module';
 import { DishService } from './dish.service';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { HttpClientModule } from '@angular/common/http';
 
 const route: Routes = [
   {
@@ -23,6 +24,7 @@ const route: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forChild(route),
     FeatherIconsModule,
     ModalModule

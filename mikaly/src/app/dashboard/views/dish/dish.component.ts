@@ -1,7 +1,7 @@
 import { DishService } from './dish.service';
-import { Component, OnInit, TemplateRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ElementRef, OnDestroy, AfterViewInit, ContentChild, AfterContentInit } from '@angular/core';
 import { Dish } from './types/dish';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -9,11 +9,12 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   templateUrl: './dish.component.html',
   styleUrls: ['./dish.component.scss']
 })
-export class DishComponent implements OnInit {
-  data$: Observable<Dish[]> = this.service.getData();
+export class DishComponent implements OnInit, OnDestroy {
+  isAvailable: string = '0';
+  data: Dish[] = [];
   modalRef!: BsModalRef;
   imageData!: string;
-  fileName!: string;
+  fileName: string = '';
   file!: any;
   dish: Dish = {
     _id: '',
@@ -25,20 +26,23 @@ export class DishComponent implements OnInit {
     status: 0
   };
 
-  @ViewChild("available", {static: true}) available!: ElementRef;
-  @ViewChild("unavailable", {static: true}) unavailable!: ElementRef;
+  private unsuscribe$ : Subject<void> = new Subject();
 
   constructor(private modalService: BsModalService, private service: DishService) {}
 
+  ngOnDestroy(): void {
+    this.unsuscribe$.next();
+    this.unsuscribe$.complete();
+  }
+
   ngOnInit(): void {
+    this.getData();
   }
 
   onFileSelected(event: Event) {
     const files = (event.target as HTMLInputElement).files![0];
     this.file = files;
-    console.log("file", this.file);
     this.fileName = files.name;
-    console.log("fileName", this.fileName);
     const allowedMimeTypes = ["image/png", "image/jpg", "image/jpeg"];
     if (files && allowedMimeTypes.includes(files.type)) {
       const reader = new FileReader();
@@ -55,8 +59,37 @@ export class DishComponent implements OnInit {
   }
 
   saveDish(): void {
-    console.log(this.dish);
+    this.dish.img = this.fileName;
+    this.dish.status = +this.isAvailable;
+    this.service.postDish(this.dish, this.file)
+        .pipe(
+          takeUntil(this.unsuscribe$)
+        )
+        .subscribe(console.log);
+    this.resetData();
+    this.getData();
     this.modalRef.hide();
   }
 
+  private getData(): void {
+    this.service.getData()
+    .pipe(takeUntil(this.unsuscribe$))
+    .subscribe(x => {
+      this.data = [...x.dishes];
+    });
+  }
+
+  private resetData(): void {
+    this.dish = {
+      _id: '',
+      img: '',
+      imgPath: '',
+      ingredients: '',
+      name: '',
+      price: 0,
+      status: 0
+    };
+    this.fileName = "";
+    this.imageData = "";
+  }
 }

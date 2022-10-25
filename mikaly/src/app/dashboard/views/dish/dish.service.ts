@@ -48,8 +48,8 @@ export class DishService {
 
   constructor(private http: HttpClient) { }
 
-  getData(): Observable<Dish[]> {
-    return of(this.data);
+  getData(): Observable<any> {
+    return this.http.get<any>(this.api + '/dish');
   }
 
   public postDish(dish: Dish, img: File): Observable<Object> {

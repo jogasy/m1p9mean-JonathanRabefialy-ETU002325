@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row p-3">
-    <div class="col" *ngFor="let item of (data$ | async)">
+    <div class="col" *ngFor="let item of data">
       <app-card [dish]="item"></app-card>
     </div>
   </div>
@@ -20,7 +20,7 @@
     <div class="form">
       <div class="mb-3">
         <label for="name" class="form-label">Nom</label>
-        <input type="text"
+        <input type="text" #checkAvailable
           class="form-control" name="name" id="name" [(ngModel)]="dish.name" aria-describedby="helpId" placeholder="">
       </div>
       <div class="mb-3">
@@ -36,18 +36,19 @@
         <input type="number"
           class="form-control" name="prix" [(ngModel)]="dish.price" id="prix" aria-describedby="helpId" placeholder="">
       </div>
-      <div class="btn-group mb-3 d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-        <label class="btn btn-outline-primary" appFeatherIcon value="available" for="btnradio1" #available>disponible</label>
+      <ng-container >
+        <div class="btn-group mb-3 d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" [(ngModel)]="isAvailable" name="btnradio" value="0" id="btnradio1" autocomplete="off">
+          <label class="btn btn-outline-primary" appFeatherIcon  for="btnradio1" >disponible</label>
 
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-        <label class="btn btn-outline-primary" for="btnradio2" value="unavailable" #unavailable>indisponible</label>
-      </div>
-
+          <input type="radio" class="btn-check" [(ngModel)]="isAvailable" name="btnradio" value="1" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-primary" for="btnradio2" >indisponible</label>
+        </div>
+      </ng-container>
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="saveDish()">Enregistrer</button>
+    <button [disabled]="dish.name === '' || dish.ingredients === '' || dish.price === 0 || fileName === ''" type="button" class="btn btn-primary" (click)="saveDish()">Enregistrer</button>
   </div>
 
 </ng-template>

@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/back-end/dist
+/back-end/dist/
 /mikaly/dist
 /tmp
 /out-tsc
