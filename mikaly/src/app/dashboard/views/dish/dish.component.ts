@@ -1,7 +1,8 @@
 import { DishService } from './dish.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Dish } from './types/dish';
 import { Observable } from 'rxjs';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-dish',
@@ -10,9 +11,14 @@ import { Observable } from 'rxjs';
 })
 export class DishComponent implements OnInit {
   data$: Observable<Dish[]> = this.service.getData();
-  constructor(private service: DishService) { }
+  modalRef!: BsModalRef;
+  constructor(private modalService: BsModalService, private service: DishService) {}
 
   ngOnInit(): void {
+  }
+
+  openAddDish(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

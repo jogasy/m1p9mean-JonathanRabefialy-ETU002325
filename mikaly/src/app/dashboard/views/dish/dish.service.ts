@@ -8,6 +8,7 @@ export class DishService {
     {
       id: "0",
       img: "../../assets/placeholder.jpg",
+      imgPath: "",
       ingredients: "tomate, viande , fromage",
       name: 'Jambon',
       price: 54,
@@ -16,6 +17,7 @@ export class DishService {
     {
       id: "1",
       img: "../../assets/placeholder.jpg",
+      imgPath: "",
       ingredients: "tomate, viande , fromage",
       name: 'Jambon',
       price: 54,
@@ -24,6 +26,7 @@ export class DishService {
     {
       id: "2",
       img: "../../assets/placeholder.jpg",
+      imgPath: "",
       ingredients: "tomate, viande , fromage",
       name: 'Jambon',
       price: 54,
@@ -32,6 +35,7 @@ export class DishService {
     {
       id: "3",
       img: "../../assets/placeholder.jpg",
+      imgPath: "",
       ingredients: "tomate, viande , fromage",
       name: 'Jambon',
       price: 54,
