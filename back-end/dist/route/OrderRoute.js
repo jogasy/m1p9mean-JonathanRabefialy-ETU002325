@@ -13,6 +13,7 @@ class OrderRoute {
     config() {
         this.routes.get('/', OrderController_1.default.getAllOrders);
         this.routes.post('/', OrderController_1.default.insertOrder);
+        this.routes.put('/:id', OrderController_1.default.putOrder);
     }
 }
 let orderRoute = new OrderRoute();

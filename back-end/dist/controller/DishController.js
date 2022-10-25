@@ -32,8 +32,6 @@ class DishController {
             try {
                 const id = req.params.id;
                 const body = req.body;
-                console.log("id", id);
-                console.log("body", body);
                 let upd = yield Dish_1.default.updateOne({ _id: id }, body);
                 res.status(200).json({
                     dish: upd

@@ -21,8 +21,6 @@ class DishController {
         try {
             const id = req.params.id;
             const body = req.body;
-            console.log("id" ,id);
-            console.log("body", body);
             let upd = await dish.updateOne({ _id: id}, body);
             res.status(200).json(
                 {
@@ -32,7 +30,6 @@ class DishController {
         } catch (error) {
             console.log("error");
         }
-       
     }
 
     public async putImgDish(req: Request, res: Response) {

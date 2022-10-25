@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { IDish } from "../interfaces/Idish";
 import { IOrder } from "../interfaces/Iorder";
 
 const OrderSchema: Schema = new Schema (
@@ -7,10 +6,11 @@ const OrderSchema: Schema = new Schema (
         name: { type: String , required: true },
         phoneNumber: { type: String , required: true },
         address: { type: String , required: true },
-        hour: { type: Number , required: true },
-        note: { type: String , required: true },
-        status: { type: Number , required: true },
-        dish: { type: [], required: true}
+        hour: { type: String , required: true },
+        note: { type: String , required: false },
+        status: { type: String , required: true },
+        total: { type: String , required: true },
+        basket: { type: [], required: true}
     },
     {
         timestamps : true

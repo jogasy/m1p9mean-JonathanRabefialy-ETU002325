@@ -10,6 +10,7 @@ class OrderRoute {
     public config(): void {
         this.routes.get('/', orderController.getAllOrders);
         this.routes.post('/', orderController.insertOrder);
+        this.routes.put('/:id', orderController.putOrder);
     }
 }
 

@@ -7,6 +7,6 @@ export interface IOrder extends Document {
   address: string;
   hour: number;
   note: string;
-  status: number;
+  status: string;
   basket: IDish[];
 }

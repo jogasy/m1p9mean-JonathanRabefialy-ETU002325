@@ -23,6 +23,21 @@ class OrderController {
             });
         });
     }
+    putOrder(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const id = req.params.id;
+                const body = req.body;
+                let upd = yield Order_1.default.updateOne({ _id: id }, body);
+                res.status(200).json({
+                    order: upd
+                });
+            }
+            catch (error) {
+                console.log("error");
+            }
+        });
+    }
     insertOrder(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let body = req.body;

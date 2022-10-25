@@ -12,6 +12,21 @@ class OrderController {
         );  
     }
 
+    public async putOrder(req: Request, res: Response) {
+        try {
+            const id = req.params.id;
+            const body = req.body;
+            let upd = await order.updateOne({ _id: id}, body);
+            res.status(200).json(
+                {
+                    order : upd
+                }
+            );  
+        } catch (error) {
+            console.log("error");
+        }
+    }
+
     public async insertOrder(req: Request, res: Response) {
         let body = req.body;
         let orders = await order.create(body);

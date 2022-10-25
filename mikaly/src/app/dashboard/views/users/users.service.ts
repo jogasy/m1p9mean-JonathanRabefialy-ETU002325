@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { User } from './types/user';
@@ -17,6 +17,10 @@ export class UsersService {
   }
 
   addUser(user: User): Observable<any> {
-    return this.http.post(this.api + '/user', user);
+    return this.http.post(this.api + '/user', {name: user.name , password: user.password, role: user.role});
+  }
+
+  deleteUser(id: string) : Observable<any> {
+    return this.http.delete(this.api + '/user/'+ id );
   }
 }
