@@ -1,6 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
+/back-end/dist
 /mikaly/dist
 /tmp
 /out-tsc
@@ -9,8 +10,8 @@
 # Node
 /mikaly/node_modules
 /back-end/node_modules
-mikaly/npm-debug.log
-mikaly/yarn-error.log
+/mikaly/npm-debug.log
+/mikaly/yarn-error.log
 
 # IDEs and editors
 .idea/
@@ -30,13 +31,13 @@ mikaly/yarn-error.log
 .history/*
 
 # Miscellaneous
-mikaly/.angular/cache/
-mikaly/.sass-cache/
-miklay/connect.lock
-mikaly/coverage
-mikaly/libpeerconnection.log
-mikaly/testem.log
-mikaly/typings
+/mikaly/.angular/cache/
+/mikaly/.sass-cache/
+/miklay/connect.lock
+/mikaly/coverage
+/mikaly/libpeerconnection.log
+/mikaly/testem.log
+/mikaly/typings
 
 # System files
 .DS_Store
