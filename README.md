@@ -7,3 +7,6 @@
 
 #back-end
 - npm run serve pour lancer l'application 
+
+#Base de données 
+- installer mongodb community server
