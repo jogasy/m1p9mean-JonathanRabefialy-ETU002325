@@ -16,7 +16,7 @@ class Server {
 	constructor() {
 		this.app = express();
 		dotenv.config();
-		this.portNumber = parseInt(process.env.portApplication!);
+		this.portNumber = parseInt(process.env.PORT!) || parseInt(process.env.portApplication!);
 		this.config();
 		this.routes();
 	}
