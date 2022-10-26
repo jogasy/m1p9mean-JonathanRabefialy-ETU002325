@@ -1,8 +1,7 @@
 #Author
 Rabefialy Jonathan M1P9 ETU002325
 
-# mikaly
-#forn-end (Angular)
+# mikaly forn-end (Angular)
 1 - mode developpement (en mode dev)
 - "npm run dev" pour demarrer l'application 
 - pour aller dans la partie admin et livreur appuyer sur "Mikaly" dans la barre de navigation
@@ -40,7 +39,7 @@ Rabefialy Jonathan M1P9 ETU002325
 ############################################################################
 Pour la mise en production , on a utilisé heroku (gratuit) pour la front-end et pour le back-end
 
-lien github: "https://github.com/jogasy/mikaly"
+
 
 
 
