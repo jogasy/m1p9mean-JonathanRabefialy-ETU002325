@@ -5,7 +5,7 @@
   </div>
   <div class="card-body">
     <h4 class="card-title">{{order.address}}</h4>
-    <span [ngClass]="{'badge bg-primary' : order.hour, 'badge bg-warning' : order.hour}">{{order.hour | hour}}</span>
+    <span [ngClass]="order.hour === '0' ? 'badge bg-primary' : 'badge bg-warning'">{{order.hour | hour}}</span>
     <h6>{{order.note}}</h6>
     <ul class="list-group mt-3">
       <li *ngFor="let item of order.basket" class="list-group-item">{{item.name}} - <span class="badge bg-primary">{{item.qty}}</span> </li>
