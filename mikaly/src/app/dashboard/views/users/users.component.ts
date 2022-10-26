@@ -49,8 +49,9 @@ export class UsersComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.unsuscribe$)
       )
-      .subscribe();
-    this.reset();
+      .subscribe(x => {
+        this.reset();
+      });
     this.modalRef.hide();
   }
 
@@ -59,8 +60,8 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.service.deleteUser(id)
       .pipe(
         takeUntil(this.unsuscribe$)
-      ).subscribe();
-    this.reset();
+      ).subscribe(x => this.reset());
+
   }
 
 
